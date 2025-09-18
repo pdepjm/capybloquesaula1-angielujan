@@ -67,3 +67,44 @@ object barrilDeCombustible {
     game.removeTickEvent("cambiarCombustible")
   }
 }
+
+//Agregar una basura que recorra la pantalla de lado a lado.
+//que pueda colisionar con capy y que sea recolecta por este.
+//agregar nuevos objetos, personajes que se puedan mover (con el teclado o pueden moverse cada determinado tiempo)
+
+object llanta {
+  var impactoEnHuellaDeCarbono = 200
+  var property position = posicionAleatoria.calcular()
+
+  method moverDerecha(){
+    position = position.right(1)
+  }
+
+  method moverIzquierda(){
+    position = position.left(1)
+  }
+  
+  method mover() =
+    if (direccion = derecha) moverDerecha(1)
+    if (direccion = izquierda) moverizquierda(1)
+    if (position = game.width) cambiarDireccion
+
+   
+
+  method impactoEnLaHuellaDeCarbono() = impactoEnHuellaDeCarbono
+
+  method nombre() = "llantita"
+
+  method image() = self.nombre() + ".png"  
+
+  method esReciclable() = true
+  
+  method tratar() {
+    impactoEnHuellaDeCarbono -= 10
+  }
+  
+  method colisionarCon(capy) {
+    capy.recolectarBasura(self)
+  }
+  
+}
